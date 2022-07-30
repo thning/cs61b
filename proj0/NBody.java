@@ -1,5 +1,5 @@
 public class NBody {
-	final static int pauseTime = 10;
+	private final static int pauseTime = 10;
 
 	public static double readRadius(String fileLocation) {
 		In in = new In(fileLocation);
