@@ -72,6 +72,8 @@ public class ArrayDeque<T>{
 	}
 
 	public T get(int i) {
+		if(i > size - 1)
+			return null;
 		int firstIndex = (nextFirstIndex + 1 + items.length) % items.length;
 		int count = 0;
 		int returnIndex = firstIndex;
@@ -82,14 +84,27 @@ public class ArrayDeque<T>{
 		return items[returnIndex];
 	}
 
+	public boolean isEmpty() {
+		return size == 0;
+	}
+
+	public void printDeque() {
+		int firstIndex = (nextFirstIndex + 1 + items.length) % items.length;
+		int count = 0;
+		int i = firstIndex;
+		while(count < size) {
+			System.out.print(items[i] + " ");
+			i = (i + 1 + items.length) % items.length;
+			count++;
+		}
+	}
+
 	public static void main(String[] args) {
 		ArrayDeque lst = new ArrayDeque();
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 10; i++){
 			lst.addLast(i);
 		}
-		for(int i = 0; i < 5; i++){
-			lst.addFirst(i);
-		}
-		System.out.print(lst.get(9));
+		// System.out.print(lst.get(4));
+		lst.printDeque();
 	}
 }
