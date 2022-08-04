@@ -14,12 +14,12 @@ public class ArrayDeque<T> {
 
     // nextlast = currfirst 
     private void resize() {
-        T[] newItems = (T[]) new Object[size * 2];
+        T[] newItems = (T[]) new Object[size * 5];
         int firstIndex = (nextFirstIndex + 1 + items.length) % items.length;
         for (int i = 0; i < size; i++) { 
             if (i >= firstIndex) {
                 newItems[i - firstIndex] = items[i];
-            } else {
+            } else{
                 newItems[size - firstIndex + i] = items[i];
             }
         }
@@ -30,12 +30,12 @@ public class ArrayDeque<T> {
 
 
     private void downsize() {
-        T[] newItems = (T[]) new Object[size];
+        T[] newItems = (T[]) new Object[size * 2];
         int index = (nextFirstIndex + 1 + items.length) % items.length;
         int count = 0;
         while (count < size) {
             newItems[count] = items[index];
-            index =    (index + 1 + items.length) % items.length;
+            index =  (index + 1 + items.length) % items.length;
             count++;
         }
         nextFirstIndex = newItems.length - 1;
@@ -62,7 +62,7 @@ public class ArrayDeque<T> {
         nextFirstIndex = (nextFirstIndex + 1 + items.length) % items.length;
         size--;
 
-        if (items.length > size * 4) {
+        if ((items.length > size * 4) && (items.length >= 16)) {
             downsize();
         }
         return removeItem;
@@ -86,7 +86,7 @@ public class ArrayDeque<T> {
         items[lastIndex] = null;
         nextLastIndex = (nextLastIndex - 1 + items.length) % items.length;
         size--;
-        if (items.length > size * 4) {
+        if ((items.length > size * 4) && (items.length >= 16)) {
             downsize();
         }
         return removeItem;
@@ -127,15 +127,10 @@ public class ArrayDeque<T> {
 
     // public static void main(String[] args) {
     //     ArrayDeque ArrayDeque = new ArrayDeque();
-    //     for(int i = 0;    i < 100; i++) {
-    //         ArrayDeque.addLast(i);
-    //     }
-
-    //     for(int i = 0;    i < 90; i++) {
-    //         ArrayDeque.removeLast();
-    //     }
-    //     System.out.println(ArrayDeque.size());        
-    //     System.out.print(ArrayDeque.items.length);     
-    
+    //     ArrayDeque.addLast(0);
+ //        ArrayDeque.addLast(1);
+ //        ArrayDeque.removeLast();     
+ //        ArrayDeque.addLast(3);
     // }
 }
+
