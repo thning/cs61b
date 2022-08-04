@@ -2,7 +2,7 @@ public class LinkedListDeque<T> {
 	private Node sentinel;
 	private int size;
 
-	private class Node{
+	private class Node {
 		public Node prev;
 		public T item;
 		public Node next;
@@ -30,11 +30,10 @@ public class LinkedListDeque<T> {
 		size++;
 	}
 
-	public T getFirst() {
-		return sentinel.next.item;
-	}
-
 	public T removeFirst() {
+		if(size == 0) {
+			return null;
+		}
 		T removeItem = sentinel.next.item;
 		Node newFirstNode = sentinel.next.next;
 		newFirstNode.prev = sentinel;
@@ -52,11 +51,11 @@ public class LinkedListDeque<T> {
 		size++;
 	}
 
-	public T getLast() {
-		return sentinel.prev.item;
-	}
 
 	public T removeLast() {
+		if(size == 0) {
+			return null;
+		}
 		T removeItem = sentinel.prev.item;
 		Node newLastNode = sentinel.prev.prev;
 		newLastNode.next = sentinel;
@@ -74,10 +73,11 @@ public class LinkedListDeque<T> {
 	}
 
 	public T get(int index) {
-		if(index > size - 1)
+		if(index > size - 1) {
 			return null;
-		Node p = sentinel;
-		int i = 1;
+		}
+		Node p = sentinel.next;
+		int i = 0;
 		while(i != index) {
 			p = p.next;
 			i++;
@@ -86,43 +86,29 @@ public class LinkedListDeque<T> {
 	}
 
 	private T getRecursive(Node node, int index) {
-		if(index == 1)
+		if(index == 0) {
 			return node.item;
+		}
 		return getRecursive(node.next, index - 1);
 	}
 
 	public T getRecursive(int index) {
-		return getRecursive(sentinel, index);
+		return getRecursive(sentinel.next, index);
 	}
 
 	public void printDeque() {
 		Node p = sentinel;
-		while(p.next!=sentinel) {
+		while(p.next != sentinel) {
 			p = p.next;
 			System.out.print(p.item + " ");
 		} 
 	}
 
-	public static void main(String[] args) {
-		LinkedListDeque<Double> lst = new LinkedListDeque<>();
-		Double a = 1.0;
-		Double b = 2.0;
-		Double c = 3.0;
-		Double d = 4.0;
-		Double e = 5.0;
-		lst.addFirst(a);
-		lst.addLast(b);
-		lst.addLast(c);
-		lst.addLast(d);
-		// System.out.print(lst.get(3));
-		// System.out.print(lst.getRecursive(3));
-		lst.printDeque();
-		System.out.print(lst.removeLast());
-		// lst.removeFirst();
-		// lst.removeLast();
-
-		// System.out.println(lst.getLast());
-		// System.out.println(lst.getSize());
-		// System.out.println(lst.getLast());
-	}
+	// public static void main(String[] args) {
+	// 	 LinkedListDeque LinkedListDeque = new LinkedListDeque();
+ //         LinkedListDeque.addLast(0);
+ //         LinkedListDeque.removeLast();     
+ //         LinkedListDeque.addLast(3);
+ //         System.out.print(LinkedListDeque.getRecursive(0));
+	// }
 }
