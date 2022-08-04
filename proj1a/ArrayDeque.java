@@ -15,13 +15,12 @@ public class ArrayDeque<T> {
 	// nextlast = currfirst 
 	private void resize() {
 		T[] newItems = (T[]) new Object[size * 2];
-		int firstIndex = (nextFirstIndex + 1 + items.length) % items.length;
-		for (int i = 0; i < size; i++) { 
-			if (i >= firstIndex) {
-				newItems[i - firstIndex] = items[i];
-			} else{
-				newItems[size - firstIndex + i] = items[i];
-			}
+		int index = (nextFirstIndex + 1 + items.length) % items.length;
+		int count = 0;
+		while (count < size) {
+			newItems[count] = items[index];
+			index = (index + 1 + items.length) % items.length;
+			count++;
 		}
 		nextFirstIndex = newItems.length - 1;
 		nextLastIndex = size;
@@ -110,12 +109,16 @@ public class ArrayDeque<T> {
 		}
 	}
 
-	public static void main(String[] args) {
-		ArrayDeque ArrayDeque = new ArrayDeque();
-        ArrayDeque.isEmpty();
-        ArrayDeque.addFirst(1);
-        ArrayDeque.removeFirst();
-        ArrayDeque.addFirst(3);
-	}
+	// public static void main(String[] args) {
+	// 	ArrayDeque lst = new ArrayDeque();
+	// 	for (int i = 0; i < 100; i++) {
+	// 		lst.addLast(i);
+	// 	}
+	// 	for (int i = 0; i < 90; i++) {
+	// 		lst.removeLast();
+	// 	}
+	// 	System.out.print(lst.get(9));
+	// 	System.out.print(lst.size());
+	// }
 }
 
