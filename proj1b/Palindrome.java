@@ -31,16 +31,16 @@ public class Palindrome {
         // return true;
     }
 
-    public boolean isPalindrome(String word, OffByOne offByOne) {
-        return checkOffByOne(word, offByOne);
+    public boolean isPalindrome(String word,CharacterComparator cc) {
+        return checkOffBy(word, cc);
     }
 
-    private boolean checkOffByOne(String word, OffByOne offByOne) {
+    private boolean checkOffBy(String word, CharacterComparator cc) {
         if (word.length() < 2) {
             return true;
         } else {
-            if (offByOne.equalChars(word.charAt(0), word.charAt(word.length() - 1))) {
-                return checkOffByOne(word.substring(1, word.length() - 1), offByOne);
+            if (cc.equalChars(word.charAt(0), word.charAt(word.length() - 1))) {
+                return checkOffBy(word.substring(1, word.length() - 1), cc);
             } else {
                 return false;
             }
