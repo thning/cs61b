@@ -20,6 +20,7 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome("flake", offByOne));
         assertFalse(palindrome.isPalindrome("mike"));
         assertFalse(palindrome.isPalindrome("curry"));
+        assertFalse(palindrome.isPalindrome("curry", offByOne));
     }
     // } Uncomment this class once you've created your Palindrome class. 
 }
