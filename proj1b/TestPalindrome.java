@@ -17,7 +17,9 @@ public class TestPalindrome {
         }
         assertEquals("persiflage", actual);
         assertTrue(palindrome.isPalindrome("noon"));
-        assertTrue("not true", palindrome.isPalindrome("flake", offByOne));
+        assertTrue(palindrome.isPalindrome("flake", offByOne));
+        assertFalse(palindrome.isPalindrome("mike"));
+        assertFalse(palindrome.isPalindrome("curry"));
     }
     // } Uncomment this class once you've created your Palindrome class. 
 }
