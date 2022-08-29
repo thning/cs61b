@@ -31,6 +31,9 @@ public class TestPalindrome {
         assertFalse(palindrome.isPalindrome("Acdb", offByOne));
         assertTrue(palindrome.isPalindrome("asdfgfdsa"));
         assertFalse(palindrome.isPalindrome("asdfwgebgea"));
+        assertTrue(palindrome.isPalindrome(" "));
+        assertTrue(palindrome.isPalindrome("a"));
+        assertTrue(palindrome.isPalindrome("aaa"));
     }
     // } Uncomment this class once you've created your Palindrome class. 
 }
