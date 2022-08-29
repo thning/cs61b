@@ -19,6 +19,8 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome("noon"));
         assertFalse(palindrome.isPalindrome("Noon"));
         assertTrue(palindrome.isPalindrome("NooN"));
+        assertTrue(palindrome.isPalindrome("'dd'"));
+        assertFalse(palindrome.isPalindrome(",kk."));
         assertTrue(palindrome.isPalindrome("flake", offByOne));
         assertFalse(palindrome.isPalindrome("mike"));
         assertFalse(palindrome.isPalindrome("curry"));
